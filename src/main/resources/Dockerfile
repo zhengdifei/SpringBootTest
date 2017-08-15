@@ -1,7 +1,7 @@
 FROM java
 MAINTAINER "zhengdifei"
 
-ADD @project.build.finalName@.jar app.jar
+ADD springboot-1.0-SNAPSHOT.jar app.jar
 
 EXPOSE 8080
 
