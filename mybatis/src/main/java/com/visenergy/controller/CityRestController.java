@@ -1,0 +1,27 @@
+package com.visenergy.controller;
+
+import com.visenergy.dao.CityDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@RestController
+@RequestMapping({"/city"})
+public class CityRestController {
+
+    @Autowired
+    private CityDao cityDao;
+
+    @RequestMapping(value = "/name")
+    public String findByName(String cityName){
+        Map paramMap = new HashMap();
+        paramMap.put("cityName", "hello");
+        paramMap.put("province_id2", 2);
+        Map city = cityDao.findByName(paramMap);
+        System.out.println(city);
+        return "success";
+    }
+}
