@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tablename author="zdf">
+	<item name="city" alias="城市表" load="true">
+		<op alias="查询城市信息" sqlid="city.findByName" type="object" >
+			<interceptor class="com.mixislink.Interceptor.impl.TestInteceptor"></interceptor>
+		</op>
+	</item>
+</tablename>

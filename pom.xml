@@ -12,6 +12,7 @@
     <modules>
         <module>hello</module>
         <module>mybatis</module>
+        <module>flyingcorespringboot</module>
     </modules>
     <version>1.1-SNAPSHOT</version>
 
