@@ -13,7 +13,7 @@
         <property name="LOG_HOME" value="/opt/springboottest/logs" />
     </springProfile>
 
-    <logger name="com.visenergy.dao" level="DEBUG"></logger>
+   <logger name="com.visenergy.dao" level="DEBUG"></logger>
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
