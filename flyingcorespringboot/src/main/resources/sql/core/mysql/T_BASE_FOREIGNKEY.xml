@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="T_BASE_FOREIGNKEY">
+	<!--ibatic注册
+	sql-map-config.xml 的注册字符串： <sqlMap resource="com/flying/dao/xml/T_BASE_FOREIGNKEY.xml" />
+	-->
+	<!--数据库注册
+	注册到数据库 ： INSERT INTO T_BASE_CONFIG(CDMC,YWMC,ZXSQLID) VALUE('外键管理','T_BASE_FOREIGNKEY','T_BASE_FOREIGNKEY.selectAll');
+	-->
+    <!--外键管理配置文件开始-->
+    <!-- 查询-->
+    <select id="selectAll"  parameterType="param" resultType="result">
+    	SELECT A.WJID,A.WJMC,A.ZBMC,A.WBMC,A.ZBZD,A.WBZD,A.STATE FROM T_BASE_FOREIGNKEY A
+		<where>
+			<if test="filter != null">
+				$filter$
+			</if>
+			<if test="order != null">
+				$order$
+			</if>
+			<if test="order == null">
+				ORDER BY WJID  DESC
+			</if>
+			<if test="start != null">
+				LIMIT #start#,#limit#
+			</if>
+		</where>
+    </select>
+    <select id="selectAllTotal" parameterType="param" resultType="int">
+    	SELECT COUNT(1) FROM T_BASE_FOREIGNKEY A
+		<where>
+			<if test="filter != null">
+				$filter$
+			</if>
+		</where>
+    </select>
+    <select id="selectById" resultType="result">
+    	SELECT A.WJID,A.WJMC,A.ZBMC,A.WBMC,A.ZBZD,A.WBZD,A.STATE FROM T_BASE_FOREIGNKEY A WHERE A.WJID = #WJID#
+    </select>
+    <select id="selectByFromName"  parameterType="param" resultType="result">
+    	SELECT A.WJID,A.WJMC,A.ZBMC,A.WBMC,A.ZBZD,A.WBZD,A.STATE FROM T_BASE_FOREIGNKEY A WHERE A.ZBMC = #MC# OR A.WBMC = #MC#
+    </select>
+    <select id="selectByWbzd"  parameterType="param" resultType="result">
+    	SELECT A.WJID,A.WJMC,A.ZBMC,A.WBMC,A.ZBZD,A.WBZD,A.STATE FROM T_BASE_FOREIGNKEY A WHERE A.WBMC = #WBMC# AND A.WBZD = #WBZD#
+    </select>
+    <select id="selectByZbzd"  parameterType="param" resultType="result">
+    	SELECT A.WJID,A.WJMC,A.ZBMC,A.WBMC,A.ZBZD,A.WBZD,A.STATE FROM T_BASE_FOREIGNKEY A WHERE A.ZBMC = #ZBMC# AND A.ZBZD = #ZBZD#
+    </select>
+    <!--插入-->
+	<insert id="insert" parameterType="param">
+		INSERT INTO T_BASE_FOREIGNKEY(WJMC,ZBMC,WBMC,ZBZD,WBZD,STATE) 
+		VALUES (#WJMC#,#ZBMC#,#WBMC#,#ZBZD#,#WBZD#,#STATE#)
+		<selectKey  resultType ="int"  keyProperty ="ID" >
+         <![CDATA[ SELECT LAST_INSERT_ID() AS ID  ]]>     
+        </selectKey > 
+    </insert>
+    <!--删除-->
+    <delete id="delete" parameterType="param">
+		DELETE FROM T_BASE_FOREIGNKEY WHERE WJID = #WJID#
+	</delete>
+	<delete id="deleteByBmc" parameterType="param">
+		DELETE FROM T_BASE_FOREIGNKEY WHERE ZBMC = #BMC# OR WBMC = #BMC#
+	</delete>
+    <!--更新-->
+	<update id="update" parameterType="param">
+		UPDATE  T_BASE_FOREIGNKEY SET WJMC = #WJMC#,ZBMC = #ZBMC#,WBMC = #WBMC#,ZBZD = #ZBZD#,WBZD = #WBZD#,STATE = #STATE#
+		WHERE WJID = #WJID#
+	</update> 
+	<!-- 获取一张表的所有关系 -->
+	<select id="relationTable" parameterType="param" resultType="result" statementType="CALLABLE">
+		{CALL RelationTable(#BMC#)}
+	</select>
+	
+	<select id="RelationTableOfwb" parameterType="param" resultType="result" statementType="CALLABLE">
+		{CALL RelationTableOfwb(#BMC#,#WBMC#)}
+	</select>
+</>

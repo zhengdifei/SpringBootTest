@@ -9,8 +9,8 @@ import java.util.*;
 /**
  * 
  * <B>描述：</B>Flying框架提供的特别工具类<br/>
- * <B>版本：</B>v3.0<br/>
- * <B>创建时间：</B>2018-03-18<br/>
+ * <B>版本：</B>v2.0<br/>
+ * <B>创建时间：</B>2012-10-10<br/>
  * <B>版权：</B>flying团队<br/>
  * 
  * @author zdf

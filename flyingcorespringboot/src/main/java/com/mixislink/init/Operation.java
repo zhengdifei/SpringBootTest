@@ -70,7 +70,7 @@ public class Operation {
 		
 		if(this.validate){//添加验证拦截
 			try {
-				Interceptor interceptorClass = (Interceptor)(Class.forName("com.flying.Interceptor.impl.ValidateInterceptor").newInstance());
+				Interceptor interceptorClass = (Interceptor)(Class.forName("com.mixislink.Interceptor.impl.ValidateInterceptor").newInstance());
 				this.setInterceptor(interceptorClass);
 			} catch (ClassNotFoundException e) {
 				log.error("系统中未找到验证拦截类",e);

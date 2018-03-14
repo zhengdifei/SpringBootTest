@@ -1,13 +1,12 @@
-package com.mixislink.Interceptor.impl;
-
-import com.mixislink.Interceptor.AbstractInterceptor;
-import com.mixislink.exception.FlyingException;
-import com.mixislink.service.Engine;
-import com.mixislink.service.EngineParameter;
-import com.mixislink.util.FlyingUtil;
+package com.flying.Interceptor.impl;
 
 import java.util.Map;
 
+import com.flying.Interceptor.AbstractInterceptor;
+import com.flying.exception.FlyingException;
+import com.flying.service.Engine;
+import com.flying.service.EngineParameter;
+import com.flying.util.FlyingUtil;
 /**
  * <B>描述：</B>update操作拦截器<br/>
  * <B>版本：</B>v2.0<br/>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="T_BASE_STATICS">
+	<!--ibatic注册
+	sql-map-config.xml 的注册字符串： <sqlMap resource="com/flying/dao/xml/T_BASE_STATICS.xml" />
+	-->
+	<!--数据库注册
+	注册到数据库 ： INSERT INTO T_BASE_CONFIG(CDMC,YWMC,ZXSQLID) VALUE('报表语句','T_BASE_STATICS','T_BASE_STATICS.selectAll');
+	-->
+    <!--报表语句配置文件开始-->
+    <!-- 查询-->
+    <select id="selectAll"  parameterType="param" resultType="result">
+    	SELECT A.BBID,A.BBMC,A.SQLID,A.BBJY FROM T_BASE_STATICS A
+		<where>
+			<if test="filter != null">
+				$filter$
+			</if>
+			<if test="order != null">
+				$order$
+			</if>
+			<if test="order == null">
+				ORDER BY BBID  DESC
+			</if>
+			<if test="start != null">
+				LIMIT #start#,#limit#
+			</if>
+		</where>
+    </select>
+    <select id="selectAllTotal" parameterType="param" resultType="int">
+    	SELECT COUNT(1) FROM T_BASE_STATICS A
+		<where>
+			<if test="filter != null">
+				$filter$
+			</if>
+		</where>
+    </select>
+    <select id="selectById" resultType="result">
+    	SELECT A.BBID,A.BBMC,A.SQLID,A.BBJY FROM T_BASE_STATICS A WHERE A.BBID = #BBID#
+    </select>
+    <select id="selectBySqlid" resultType="result">
+    	SELECT A.BBID,A.BBMC,A.SQLID,A.BBJY FROM T_BASE_STATICS A WHERE A.SQLID = #SQLID#
+    </select>
+    <!--插入-->
+	<insert id="insert" parameterType="param">
+		INSERT INTO T_BASE_STATICS(BBMC,SQLID,BBJY) 
+		VALUES (#BBMC:VARCHAR#,#SQLID:VARCHAR#,#BBJY:VARCHAR#)
+		<selectKey  resultType ="int"  keyProperty ="ID" >   <![CDATA[ SELECT LAST_INSERT_ID() AS ID  ]]>     </selectKey >
+    </insert>
+    <!--删除-->
+    <delete id="delete" parameterType="param">
+		DELETE FROM T_BASE_STATICS WHERE BBID = #BBID#
+	</delete>
+	<delete id="deleteBySqlid" parameterType="param">
+		DELETE FROM T_BASE_STATICS WHERE SQLID = #SQLID#
+	</delete>
+    <!--更新-->
+	<update id="update" parameterType="param">
+		UPDATE  T_BASE_STATICS SET BBMC = #BBMC:VARCHAR#,SQLID = #SQLID:VARCHAR#,BBJY = #BBJY:VARCHAR#
+		WHERE  BBID = #BBID#
+	</update> 
+</>

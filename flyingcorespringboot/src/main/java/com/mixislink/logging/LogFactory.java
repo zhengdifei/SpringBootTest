@@ -19,13 +19,13 @@ public class LogFactory {
 
 	static {
 //		tryImplementation("org.apache.commons.logging.LogFactory",
-//				"com.flying.logging.jakarta.JakartaLoggingImpl");
+//				"com.mixislink.logging.jakarta.JakartaLoggingImpl");
 		tryImplementation("org.apache.log4j.Logger",
 				"com.mixislink.logging.log4j.Log4jImpl");
 //		tryImplementation("java.util.logging.Logger",
-//				"com.flying.logging.jdk14.Jdk14LoggingImpl");
+//				"com.mixislink.logging.jdk14.Jdk14LoggingImpl");
 //		tryImplementation("java.lang.Object",
-//				"com.flying.logging.nologging.NoLoggingImpl");
+//				"com.mixislink.logging.nologging.NoLoggingImpl");
 	}
 
 	private static void tryImplementation(String testClassName,

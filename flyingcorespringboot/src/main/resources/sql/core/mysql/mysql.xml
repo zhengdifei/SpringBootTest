@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mysql">
+    <!--配置文件开始-->
+    <!--创建时间2010-05-11 10:05:13-->
+    <!--映射类-->
+		<resultMap type="java.util.HashMap" id="columnMap">
+            <result column="Field" property="ZDMC"/>              
+            <result column="Type" property="ZDLX" />
+            <result column="Extra" property="ZJFS"/>
+            <result column="Comment" property="ZDZS" />
+            <result column="Key" property="KEY" />   
+            <result column="Null" property="NULL" />
+            <result column="Default" property="MRZ" />         
+       	</resultMap>
+    	<resultMap type="java.util.HashMap" id="foreignInfoMap">
+            <result column="TABLE_NAME" property="ZBMC"/>              
+            <result column="COLUMN_NAME" property="ZBZD" />
+            <result column="REFERENCED_TABLE_NAME" property="WBMC"/>
+            <result column="REFERENCED_COLUMN_NAME" property="WBZD" />          
+       	</resultMap>
+     <!-- 查询表信息 -->
+	 <select id="selectTableByBmc" resultType="hashmap" parameterType="hashmap">
+          <![CDATA[   
+          SELECT TABLE_NAME BMC,TABLE_COMMENT BZS FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = #BMC#
+          ]]>
+     </select>
+    <!--查询show full columns from test1;-->
+	 <select id="selectFieldByBmc" resultMap="columnMap" parameterType="hashmap">
+          <![CDATA[   SHOW FULL COLUMNS FROM $BMC$   ]]>
+     </select>
+     
+    <!-- 根据外键查询：SELECT * FROM information_schema.KEY_COLUMN_USAGE WHERE table_name='t_xg_student' AND column_name='zzmm'-->
+    <select id="selectByZbzd" resultMap="foreignInfoMap" parameterType="hashmap">
+    	SELECT * FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE WHERE TABLE_NAME=#ZBMC# AND COLUMN_NAME=#ZBZD#
+    </select>
+    
+     <!-- 根据条件查询表 -->
+	 <select id="selectTable" resultType="hashmap" parameterType="hashmap">
+        SELECT TABLE_NAME BMC,TABLE_COMMENT BZS FROM INFORMATION_SCHEMA.TABLES
+         <where>
+             <if test="filter != null">
+                 $filter$
+             </if>
+         </where>
+     </select>
+</mapper>

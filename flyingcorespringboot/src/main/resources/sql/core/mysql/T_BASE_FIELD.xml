@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="T_BASE_FIELD">
+	<!--ibatic注册
+	sql-map-config.xml 的注册字符串： <sqlMap resource="com/flying/dao/xml/T_BASE_FIELD.xml" />
+	-->
+	<!--数据库注册
+	注册到数据库 ： INSERT INTO T_BASE_CONFIG(CDMC,YWMC,ZXSQLID) VALUE('字段管理','T_BASE_FIELD','T_BASE_FIELD.selectAll');
+	-->
+    <!--字段管理配置文件开始-->
+    <!-- 查询-->
+    <select id="selectAll"  parameterType="param" resultType="result">
+    	SELECT A.ZDID,A.ZDMC,A.ZDLX,A.ZDCD,A.SFZJ,A.SFWK,A.MRZ,A.ZDZS FROM T_BASE_FIELD A
+		<where>
+			<if test="filter != null">
+				$filter$
+			</if>
+			<if test="order != null">
+				$order$
+			</if>
+			<if test="order == null">
+				ORDER BY ZDID  DESC
+			</if>
+			<if test="start != null">
+				LIMIT #start#,#limit#
+			</if>
+		</where>
+    </select>
+    <select id="selectAllTotal" parameterType="param" resultType="int">
+    	SELECT COUNT(1) FROM T_BASE_FIELD A
+		<where>
+			<if test="filter != null">
+				$filter$
+			</if>
+		</where>
+    </select>
+    <select id="selectByBid" parameterType="param" resultType="result">
+    	SELECT A.ZDID,A.ZDMC,A.ZDLX,A.ZDCD,A.SFZJ,A.SFWK,A.MRZ,A.ZDZS FROM T_BASE_FIELD A WHERE A.BID = #BID#
+    </select>
+     <select id="selectByBmc" parameterType="param" resultType="result">
+    	SELECT A.ZDID,A.ZDMC,A.ZDLX,A.ZDCD,A.SFZJ,A.SFWK,A.MRZ,A.ZDZS FROM T_BASE_FIELD A ,T_BASE_TABLE B WHERE A.BID = B.BID AND B.BMC = #BMC#
+    </select>
+    <select id="selectById" resultType="result">
+    	SELECT A.ZDID,A.ZDMC,A.ZDLX,A.ZDCD,A.SFZJ,A.SFWK,A.MRZ,A.ZDZS FROM T_BASE_FIELD A WHERE A.ZDID = #ZDID#
+    </select>
+    <!--插入-->
+	<insert id="insert" parameterType="param">
+		INSERT INTO T_BASE_FIELD(ZDMC,ZDLX,ZDCD,SFZJ,SFWK,MRZ,ZDZS,BID) 
+		VALUES (#ZDMC#,#ZDLX#,#ZDCD#,#SFZJ#,#SFWK#,#MRZ#,#ZDZS#,#BID#)
+		<selectKey  resultType ="int"  keyProperty ="ID" >
+         <![CDATA[ SELECT LAST_INSERT_ID() AS ID  ]]>     
+        </selectKey > 
+    </insert>
+    <!--删除-->
+    <delete id="delete" parameterType="param">
+		DELETE FROM T_BASE_FIELD WHERE ZDID = #ZDID#
+	</delete>
+	<delete id="deleteByBmc" parameterType="param">
+		DELETE FROM T_BASE_FIELD WHERE BID IN (SELECT BID FROM T_BASE_TABLE WHERE BMC = #BMC#)
+	</delete>
+    <!--更新-->
+	<update id="update" parameterType="param">
+		UPDATE  T_BASE_FIELD SET ZDMC = #ZDMC#,ZDLX = #ZDLX#,ZDCD = #ZDCD#,SFZJ = #SFZJ#,SFWK = #SFWK#,MRZ = #MRZ#,ZDZS = #ZDZS#
+		WHERE ZDID = #ZDID#
+	</update> 
+	<!-- 获取某张表的非主键字段集合 -->
+	<select id="getFieldWithoutPk" parameterType="param" resultType="result">
+		SELECT A.ZDID,A.ZDMC,A.ZDLX,A.ZDCD,A.SFZJ,A.SFWK,A.MRZ,A.ZDZS FROM T_BASE_FIELD A ,T_BASE_TABLE B WHERE A.BID = B.BID AND A.SFZJ =0 AND B.BMC = #BMC#
+	</select>
+</mapper>

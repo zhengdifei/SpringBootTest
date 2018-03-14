@@ -1,4 +1,4 @@
-package com.flying.test.&sub&;
+package com.mixislink.test.&sub&;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -10,8 +10,8 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.flying.service.Engine;
-import com.flying.service.EngineParameter;
+import com.mixislink.service.Engine;
+import com.mixislink.service.EngineParameter;
 
 public class Test&Sub&&Table& {
 	private static String &ID& = null;
