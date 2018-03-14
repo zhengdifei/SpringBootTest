@@ -1,10 +1,11 @@
-package com.flying.util;
+package com.mixislink.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 /**
  * 
  * <B>描述：</B>日期工具类<br/>

@@ -1,20 +1,13 @@
-package com.flying.util;
+package com.mixislink.util;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import com.mixislink.init.StaticVariable;
+import com.mixislink.logging.Log;
+import com.mixislink.logging.LogFactory;
+
+import java.io.*;
 import java.util.Enumeration;
-import java.util.zip.CRC32;
-import java.util.zip.CheckedOutputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-import java.util.zip.ZipOutputStream;
+import java.util.zip.*;
 
-import com.flying.init.StaticVariable;
-import com.flying.logging.Log;
-import com.flying.logging.LogFactory;
 /**
  * <B>描述：</B>zip压缩工具类<br/>
  * <B>版本：</B>v2.0<br/>

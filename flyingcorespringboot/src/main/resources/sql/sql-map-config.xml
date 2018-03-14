@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sqlMapConfig>
- 	<settings 
-	cacheModelsEnabled="true" 
-	enhancementEnabled="true" 
-	lazyLoadingEnabled="true" 
-	errorTracingEnabled="true" 
-	maxRequests="2048" 
-	maxSessions="1024" 
-	maxTransactions="1024" 
-	useStatementNamespaces="true" 
-	/>
-</sqlMapConfig>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="result" type="java.util.HashMap" />
+		<typeAlias alias="param" type="java.util.HashMap" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="sql/core/mysql/city.xml" />
+		<mapper resource="sql/core/mysql/mysql.xml" />
+		<mapper resource="sql/core/mysql/T_BASE_FIELD.xml" />
+		<mapper resource="sql/core/mysql/T_BASE_TABLE.xml" />
+		<mapper resource="sql/core/mysql/T_BASE_FOREIGNKEY.xml" />
+		<mapper resource="sql/core/mysql/T_BASE_STATICS.xml" />
+		<mapper resource="sql/core/mysql/T_BASE_LOG.xml" />
+	</mappers>
+</configuration>

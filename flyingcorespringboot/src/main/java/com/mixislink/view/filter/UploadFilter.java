@@ -1,38 +1,22 @@
-package com.flying.view.filter;
+package com.mixislink.view.filter;
 
-import java.io.BufferedOutputStream;
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletInputStream;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import com.mixislink.init.StaticVariable;
+import com.mixislink.logging.Log;
+import com.mixislink.logging.LogFactory;
+import com.mixislink.service.Engine;
+import com.mixislink.service.EngineParameter;
+import com.mixislink.util.FileUtil;
+import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import org.springframework.core.annotation.Order;
 import org.springframework.util.FileCopyUtils;
 
-import com.flying.init.StaticVariable;
-import com.flying.logging.Log;
-import com.flying.logging.LogFactory;
-import com.flying.service.Engine;
-import com.flying.service.EngineParameter;
-import com.flying.util.FileUtil;
-import com.flying.view.servlet.CommonResponse;
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * <B>描述：</B>上传过滤器<br/>
@@ -42,6 +26,8 @@ import com.flying.view.servlet.CommonResponse;
  * 
  * @author zdf
  */
+@Order(5)
+@WebFilter(filterName = "UploadFilter", urlPatterns = "*.action")
 public class UploadFilter implements Filter {
 	private static Log log = LogFactory.getLog(UploadFilter.class);//日志
 	
@@ -169,7 +155,7 @@ public class UploadFilter implements Filter {
 		            		if(fileLength > maxSize){
 		            			fileStream.close();
 		            			FileUtil.deleteFile(new File(savePath + newFileName));
-		            			CommonResponse.responseJson(res,false,oldFileName+"文件大小超过"+(maxSize/(1024*1024))+"M！");
+		            			//CommonResponse.responseJson(res,false,oldFileName+"文件大小超过"+(maxSize/(1024*1024))+"M！");
 		            			log.debug(oldFileName+"文件大小超过"+(maxSize/(1024*1024))+"M！");
 		            			return;
 		            		}

@@ -1,14 +1,14 @@
-package com.flying.Interceptor.impl;
+package com.mixislink.Interceptor.impl;
 
-import java.io.File;
-
+import com.mixislink.Interceptor.AbstractInterceptor;
+import com.mixislink.builder.BuilderUtil;
+import com.mixislink.service.EngineParameter;
+import com.mixislink.util.FileUtil;
 import org.dom4j.Document;
 import org.dom4j.Element;
 
-import com.flying.Interceptor.AbstractInterceptor;
-import com.flying.builder.BuilderUtil;
-import com.flying.service.EngineParameter;
-import com.flying.util.FileUtil;
+import java.io.File;
+
 /**
  * <B>描述：</B>子模块导入配置<br/>
  * <B>版本：</B>v2.0<br/>

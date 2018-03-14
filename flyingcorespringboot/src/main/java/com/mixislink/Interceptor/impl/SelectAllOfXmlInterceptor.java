@@ -1,16 +1,15 @@
-package com.flying.Interceptor.impl;
+package com.mixislink.Interceptor.impl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import com.mixislink.Interceptor.AbstractInterceptor;
+import com.mixislink.service.Engine;
+import com.mixislink.service.EngineParameter;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
-import com.flying.Interceptor.AbstractInterceptor;
-import com.flying.service.Engine;
-import com.flying.service.EngineParameter;
+import java.util.List;
+import java.util.Map;
+
 /**
  * <B>描述：</B>部门处理拦截类<br/>
  * <B>版本：</B>v2.0<br/>

@@ -1,20 +1,20 @@
-package com.flying.Interceptor.impl;
+package com.mixislink.Interceptor.impl;
+
+import com.mixislink.Interceptor.AbstractInterceptor;
+import com.mixislink.builder.BuilderUtil;
+import com.mixislink.exception.FlyingException;
+import com.mixislink.init.StaticVariable;
+import com.mixislink.service.Engine;
+import com.mixislink.service.EngineParameter;
+import com.mixislink.util.FileUtil;
+import com.mixislink.util.SqlUtil;
+import net.sf.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import net.sf.json.JSONObject;
-
-import com.flying.Interceptor.AbstractInterceptor;
-import com.flying.builder.BuilderUtil;
-import com.flying.exception.FlyingException;
-import com.flying.init.StaticVariable;
-import com.flying.service.Engine;
-import com.flying.service.EngineParameter;
-import com.flying.util.FileUtil;
-import com.flying.util.SqlUtil;
 /**
  * <B>描述：</B>创建报表类<br/>
  * <B>版本：</B>v2.0<br/>

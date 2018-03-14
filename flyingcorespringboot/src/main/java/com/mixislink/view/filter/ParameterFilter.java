@@ -1,24 +1,20 @@
-package com.flying.view.filter;
+package com.mixislink.view.filter;
 
+import com.mixislink.logging.Log;
+import com.mixislink.logging.LogFactory;
+import com.mixislink.service.EngineParameter;
+import org.springframework.core.annotation.Order;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.flying.logging.Log;
-import com.flying.logging.LogFactory;
-import com.flying.service.EngineParameter;
 
 /**
  * 
@@ -29,6 +25,8 @@ import com.flying.service.EngineParameter;
  * 
  * @author zdf
  */
+@Order(2)
+@WebFilter(filterName = "ParameterFilter", urlPatterns = "*.action")
 public class ParameterFilter implements Filter {
 
 	private static Log log = LogFactory.getLog(ParameterFilter.class);

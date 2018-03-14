@@ -1,10 +1,11 @@
-package com.flying.Interceptor.impl;
+package com.mixislink.Interceptor.impl;
+
+import com.mixislink.Interceptor.AbstractInterceptor;
+import com.mixislink.service.EngineParameter;
 
 import java.util.Iterator;
 import java.util.Set;
 
-import com.flying.Interceptor.AbstractInterceptor;
-import com.flying.service.EngineParameter;
 /**
  * 
  * <B>描述：</B>boolean参数处理类<br/>

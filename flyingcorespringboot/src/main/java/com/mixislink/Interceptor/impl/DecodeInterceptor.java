@@ -1,7 +1,8 @@
-package com.flying.Interceptor.impl;
+package com.mixislink.Interceptor.impl;
 
-import com.flying.Interceptor.AbstractInterceptor;
-import com.flying.service.EngineParameter;
+import com.mixislink.Interceptor.AbstractInterceptor;
+import com.mixislink.service.EngineParameter;
+
 /**
  * 
  * <B>描述：</B>unicode编码参数转换，用于flex传递进入的参数<br/>

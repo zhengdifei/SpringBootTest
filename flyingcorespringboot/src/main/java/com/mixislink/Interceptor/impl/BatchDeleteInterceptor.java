@@ -1,8 +1,8 @@
-package com.flying.Interceptor.impl;
+package com.mixislink.Interceptor.impl;
 
-import com.flying.Interceptor.AbstractInterceptor;
-import com.flying.service.Engine;
-import com.flying.service.EngineParameter;
+import com.mixislink.Interceptor.AbstractInterceptor;
+import com.mixislink.service.Engine;
+import com.mixislink.service.EngineParameter;
 
 public class BatchDeleteInterceptor extends AbstractInterceptor {
 

@@ -1,26 +1,20 @@
-package com.flying.view.filter;
+package com.mixislink.view.filter;
 
-import java.io.IOException;
-import java.util.Map;
+import com.mixislink.init.StaticVariable;
+import com.mixislink.logging.Log;
+import com.mixislink.logging.LogFactory;
+import com.mixislink.service.Engine;
+import com.mixislink.service.EngineParameter;
+import org.springframework.core.annotation.Order;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import com.flying.init.StaticVariable;
-import com.flying.logging.Log;
-import com.flying.logging.LogFactory;
-import com.flying.service.Engine;
-import com.flying.service.EngineParameter;
-import com.flying.util.RandomValidateCode;
-import com.flying.view.servlet.CommonResponse;
+import java.io.IOException;
+import java.util.Map;
 
 /**
  * 
@@ -31,6 +25,8 @@ import com.flying.view.servlet.CommonResponse;
  * 
  * @author zdf
  */
+@Order(4)
+@WebFilter(filterName = "PermissionFilter", urlPatterns = "*.action")
 public class PermissionFilter implements Filter {
 	private static Log log = LogFactory.getLog(PermissionFilter.class);//日志
     /**
@@ -91,8 +87,8 @@ public class PermissionFilter implements Filter {
 		}else{
 			if(session == null || session.getAttribute("USERINFO") == null){
 				log.debug("此用户未登陆！");
-				res.setStatus(CommonResponse.FLYING_PAGE_REDIRECT);
-				CommonResponse.responseJson(res, false, "login.html");
+				//res.setStatus(CommonResponse.FLYING_PAGE_REDIRECT);
+				//CommonResponse.responseJson(res, false, "login.html");
 				return;
 			}else if(StaticVariable.LOGIN_WHITE_LIST.containsKey(ep.getCommand())){
 				log.debug("登陆白名单，无需验证！");
@@ -117,8 +113,8 @@ public class PermissionFilter implements Filter {
 					
 					if(Integer.parseInt(selfEp.getResult("data").toString()) == 0 ){
 						log.debug(userInfo.get("LOGIN_NAME")+" 没有访问 " + command +" 的权限！");
-						res.setStatus(CommonResponse.FLYING_PAGE_REDIRECT);
-						CommonResponse.responseJson(res, false, "login.html");//进行跳转
+						//res.setStatus(CommonResponse.FLYING_PAGE_REDIRECT);
+						//CommonResponse.responseJson(res, false, "login.html");//进行跳转
 						return;
 					}
 				}

@@ -1,4 +1,6 @@
-package com.flying.util;
+package com.mixislink.util;
+
+import com.mixislink.exception.FlyingException;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -6,8 +8,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
-
-import com.flying.exception.FlyingException;
 
 public class JdbcUtil {
 

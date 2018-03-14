@@ -1,9 +1,10 @@
 package com.mixislink.test;
 
-import com.visenergy.Application;
+import com.mixislink.Application;
+import com.mixislink.service.Engine;
+import com.mixislink.service.EngineParameter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -11,13 +12,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = Application.class)
 public class ApplicationTests {
-    @Autowired
-    //private CityDao cityDao;
 
     @Test
     @Rollback
     public void findByName() throws Exception{
-        //City city = cityDao.findByName("a");
+        EngineParameter ep = new EngineParameter("city.findByName");
+        ep.putParam("cityName", "hello");
+        ep.putParam("province_id2", 2);
+        Engine.execute(ep);
+        System.out.println(ep.getResultMap());
         //Assert.assertEquals(1, city.getProvinceId().intValue());
     }
 }

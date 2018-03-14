@@ -1,13 +1,14 @@
-package com.flying.Interceptor.impl;
+package com.mixislink.Interceptor.impl;
+
+import com.mixislink.Interceptor.AbstractInterceptor;
+import com.mixislink.service.EngineParameter;
+import com.mixislink.util.DateUtil;
 
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.Set;
 
-import com.flying.Interceptor.AbstractInterceptor;
-import com.flying.service.EngineParameter;
-import com.flying.util.DateUtil;
 /**
  * <B>描述：</B>日期参数处理类<br/>
  * <B>版本：</B>v2.0<br/>

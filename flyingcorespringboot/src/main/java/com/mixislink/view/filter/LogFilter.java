@@ -1,27 +1,21 @@
-package com.flying.view.filter;
+package com.mixislink.view.filter;
 
+import com.mixislink.init.StaticVariable;
+import com.mixislink.logging.Log;
+import com.mixislink.logging.LogCache;
+import com.mixislink.logging.LogFactory;
+import com.mixislink.service.EngineParameter;
+import com.mixislink.util.FlyingUtil;
+import org.springframework.core.annotation.Order;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import net.sf.json.JSONObject;
-
-import com.flying.init.StaticVariable;
-import com.flying.logging.Log;
-import com.flying.logging.LogCache;
-import com.flying.logging.LogFactory;
-import com.flying.service.EngineParameter;
-import com.flying.util.FlyingUtil;
 
 /**
  * 
@@ -32,6 +26,8 @@ import com.flying.util.FlyingUtil;
  * 
  * @author zdf
  */
+//@Order(10)
+//@WebFilter(filterName = "LogFilter", urlPatterns = "*.action")
 public class LogFilter implements Filter {
 	private static Log log = LogFactory.getLog(LogFilter.class);//日志
 	

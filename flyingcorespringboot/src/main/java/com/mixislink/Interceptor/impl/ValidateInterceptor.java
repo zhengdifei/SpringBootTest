@@ -1,4 +1,12 @@
-package com.flying.Interceptor.impl;
+package com.mixislink.Interceptor.impl;
+
+import com.mixislink.Interceptor.AbstractInterceptor;
+import com.mixislink.builder.BuilderUtil;
+import com.mixislink.exception.FlyingException;
+import com.mixislink.service.EngineParameter;
+import com.mixislink.util.FileUtil;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
 import java.io.File;
 import java.util.HashMap;
@@ -7,15 +15,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
-import com.flying.Interceptor.AbstractInterceptor;
-import com.flying.builder.BuilderUtil;
-import com.flying.exception.FlyingException;
-import com.flying.service.EngineParameter;
-import com.flying.util.FileUtil;
 
 /**
  * <B>描述：</B>后台验证拦截器<br/>

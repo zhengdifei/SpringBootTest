@@ -1,22 +1,21 @@
-package com.flying.Interceptor.impl;
+package com.mixislink.Interceptor.impl;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
+import com.mixislink.Interceptor.AbstractInterceptor;
+import com.mixislink.builder.BuilderUtil;
+import com.mixislink.exception.FlyingException;
+import com.mixislink.init.StaticVariable;
+import com.mixislink.service.Engine;
+import com.mixislink.service.EngineParameter;
+import com.mixislink.util.FileUtil;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
-import com.flying.Interceptor.AbstractInterceptor;
-import com.flying.builder.BuilderUtil;
-import com.flying.exception.FlyingException;
-import com.flying.init.StaticVariable;
-import com.flying.service.Engine;
-import com.flying.service.EngineParameter;
-import com.flying.util.FileUtil;
+import java.io.File;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 /**
  * 
  * <B>描述：</B>前台使用flex设计表，之后将数据传递到后台保存元数据表中。<br/>

@@ -1,4 +1,4 @@
-package com.flying.util;
+package com.mixislink.util;
 /**
  * 
  * <B>描述：</B>分页工具类<br/>

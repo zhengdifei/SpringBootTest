@@ -10,16 +10,16 @@
 			<if test="filter != null">
 				$filter$
 			</if>
-			<if test="order != null">
-				$order$
-			</if>
-			<if test="order == null">
-				ORDER BY LOG_ID  DESC
-			</if>
-			<if test="start != null">
-				LIMIT #start#,#limit#
-			</if>
 		</where>
+        <if test="order != null">
+            $order$
+        </if>
+        <if test="order == null">
+            ORDER BY LOG_ID  DESC
+        </if>
+        <if test="start != null">
+            LIMIT #start#,#limit#
+        </if>
     </select>
     <select id="selectAllTotal" parameterType="hashmap" resultType="int">
    		SELECT COUNT(*) FROM T_BASE_LOG A

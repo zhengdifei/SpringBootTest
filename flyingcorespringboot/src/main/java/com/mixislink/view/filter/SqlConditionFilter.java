@@ -1,17 +1,13 @@
-package com.flying.view.filter;
+package com.mixislink.view.filter;
 
-import java.io.IOException;
+import com.mixislink.service.EngineParameter;
+import org.springframework.core.annotation.Order;
 
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.flying.service.EngineParameter;
+import java.io.IOException;
 
 /**
  * 
@@ -22,6 +18,8 @@ import com.flying.service.EngineParameter;
  * 
  * @author zdf
  */
+@Order(3)
+@WebFilter(filterName = "SqlConditionFilter", urlPatterns = "*.action")
 public class SqlConditionFilter implements Filter {
 
     /**

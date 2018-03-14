@@ -3,7 +3,7 @@
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="T_BASE_TABLE">
 	<!--ibatic注册
-	sql-map-config.xml 的注册字符串： <sqlMap resource="com/flying/dao/xml/T_BASE_TABLE.xml" />
+	sql-map-config.xml 的注册字符串： <sqlMap resource="com.mixislink.dao/xml/T_BASE_TABLE.xml" />
 	-->
 	<!--数据库注册
 	注册到数据库 ： INSERT INTO T_BASE_CONFIG(CDMC,YWMC,ZXSQLID) VALUE('表管理','T_BASE_TABLE','T_BASE_TABLE.selectAll');
@@ -14,52 +14,52 @@
     	SELECT A.BID,A.BMC,A.BZS,A.BMS,A.X,A.Y,A.HEIGHT,A.WIDTH,A.STATE FROM T_BASE_TABLE A
 		<where>
 			<if test="filter != null">
-				$filter$
-			</if>
-			<if test="order != null">
-				$order$
-			</if>
-			<if test="order == null">
-				ORDER BY BID  DESC
-			</if>
-			<if test="start != null">
-				LIMIT #start#,#limit#
+				${filter}
 			</if>
 		</where>
+		<if test="order != null">
+			${order}
+		</if>
+		<if test="order == null">
+			ORDER BY BID  DESC
+		</if>
+		<if test="start != null">
+			LIMIT #{start},#{limit}
+		</if>
     </select>
     <select id="selectAllTotal" parameterType="param" resultType="int">
     	SELECT COUNT(1) FROM T_BASE_TABLE A
 		<where>
 			<if test="filter != null">
-				$filter$
+				${filter}
 			</if>
 		</where>
     </select>
     <select id="selectById" resultType="result">
-    	SELECT A.BID,A.BMC,A.BZS,A.BMS,A.X,A.Y,A.HEIGHT,A.WIDTH,A.STATE FROM T_BASE_TABLE A WHERE A.BID = #BID#
+    	SELECT A.BID,A.BMC,A.BZS,A.BMS,A.X,A.Y,A.HEIGHT,A.WIDTH,A.STATE FROM T_BASE_TABLE A WHERE A.BID = #{BID}
     </select>
 	<select id="selectByBmc" parameterType="param" resultType="result">
-		SELECT A.BID,A.BMC,A.BZS,A.BMS,A.X,A.Y,A.HEIGHT,A.WIDTH,A.STATE FROM T_BASE_TABLE A WHERE A.BMC = #BMC#
+		SELECT A.BID,A.BMC,A.BZS,A.BMS,A.X,A.Y,A.HEIGHT,A.WIDTH,A.STATE FROM T_BASE_TABLE A WHERE A.BMC = #{BMC}
 	</select>
     <!--插入-->
-	<insert id="insert" parameterType="param">
+	<insert id="insert" parameterType="java.util.HashMap">
 		INSERT INTO T_BASE_TABLE(BMC,BZS,BMS,X,Y,HEIGHT,WIDTH,STATE) 
-		VALUES (#BMC#,#BZS#,#BMS#,#X#,#Y#,#HEIGHT#,#WIDTH#,#STATE#)
+		VALUES (#{BMC},#{BZS},#{BMS},#{X},#{Y},#{HEIGHT},#{WIDTH},#{STATE})
 		<selectKey  resultType ="int"  keyProperty ="ID" >
-         <![CDATA[ SELECT LAST_INSERT_ID() AS ID  ]]>     
-        </selectKey > 
+         <![CDATA[ SELECT LAST_INSERT_ID() AS ID  ]]>
+        </selectKey >
     </insert>
     
     <!--删除-->
     <delete id="delete" parameterType="param">
-		DELETE FROM T_BASE_TABLE WHERE BID = #BID#
+		DELETE FROM T_BASE_TABLE WHERE BID = #{BID}
 	</delete>
 	<delete id="deleteByBmc" parameterType="param">
-		DELETE FROM T_BASE_TABLE WHERE BMC = #BMC#
+		DELETE FROM T_BASE_TABLE WHERE BMC = #{BMC}
 	</delete>
     <!--更新-->
 	<update id="update" parameterType="param">
-		UPDATE  T_BASE_TABLE SET BMC = #BMC#,BZS = #BZS#,BMS = #BMS#,X = #X#,Y = #Y#,HEIGHT = #HEIGHT#,WIDTH = #WIDTH#,STATE = #STATE#
-		WHERE BID = #BID#
+		UPDATE  T_BASE_TABLE SET BMC = #{BMC},BZS = #{BZS},BMS = #{BMS},X = #{X},Y = #{Y},HEIGHT = #{HEIGHT},WIDTH = #{WIDTH},STATE = #{STATE}
+		WHERE BID = #{BID}
 	</update> 
-</>
+</mapper>

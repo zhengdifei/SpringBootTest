@@ -1,4 +1,4 @@
-package com.flying.util;
+package com.mixislink.util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -17,7 +17,7 @@ public class SHA1 {
 	public static String getSHA1(String sourceStr) 
 	{ 
 		try {
-            MessageDigest digest = java.security.MessageDigest.getInstance("SHA-1");
+            MessageDigest digest = MessageDigest.getInstance("SHA-1");
             digest.update(sourceStr.getBytes());
             byte messageDigest[] = digest.digest();
             // Create Hex String

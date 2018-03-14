@@ -1,13 +1,14 @@
-package com.flying.Interceptor.impl;
+package com.mixislink.Interceptor.impl;
+
+import com.mixislink.Interceptor.AbstractInterceptor;
+import com.mixislink.exception.FlyingException;
+import com.mixislink.service.Engine;
+import com.mixislink.service.EngineParameter;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.flying.Interceptor.AbstractInterceptor;
-import com.flying.exception.FlyingException;
-import com.flying.service.Engine;
-import com.flying.service.EngineParameter;
 /**
  * 
  * <B>描述：</B>获取一个报表信息<br/>

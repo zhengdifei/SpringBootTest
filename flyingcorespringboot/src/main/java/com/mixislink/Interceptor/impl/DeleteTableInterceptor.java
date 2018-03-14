@@ -1,18 +1,18 @@
-package com.flying.Interceptor.impl;
+package com.mixislink.Interceptor.impl;
+
+import com.mixislink.Interceptor.AbstractInterceptor;
+import com.mixislink.builder.BuilderUtil;
+import com.mixislink.exception.FlyingException;
+import com.mixislink.init.StaticVariable;
+import com.mixislink.service.Engine;
+import com.mixislink.service.EngineParameter;
+import com.mixislink.util.FileUtil;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
 
 import java.io.File;
 import java.util.Map;
 
-import org.dom4j.Document;
-import org.dom4j.DocumentHelper;
-
-import com.flying.Interceptor.AbstractInterceptor;
-import com.flying.builder.BuilderUtil;
-import com.flying.exception.FlyingException;
-import com.flying.init.StaticVariable;
-import com.flying.service.Engine;
-import com.flying.service.EngineParameter;
-import com.flying.util.FileUtil;
 /**
  * 
  * <B>描述：</B>根据表名删除一张表数据，在删除的过程中，我们需要完成下面的工作<br/>

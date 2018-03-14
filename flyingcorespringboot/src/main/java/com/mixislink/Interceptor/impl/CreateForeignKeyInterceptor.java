@@ -1,19 +1,14 @@
-package com.flying.Interceptor.impl;
+package com.mixislink.Interceptor.impl;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
+import com.mixislink.Interceptor.AbstractInterceptor;
+import com.mixislink.init.StaticVariable;
+import com.mixislink.service.Engine;
+import com.mixislink.service.EngineParameter;
 import org.dom4j.Document;
 import org.dom4j.Element;
 
-import com.flying.Interceptor.AbstractInterceptor;
-import com.flying.init.StaticVariable;
-import com.flying.service.Engine;
-import com.flying.service.EngineParameter;
-import com.flying.util.FlyingUtil;
+import java.util.*;
+
 /**
  * 
  * <B>描述：</B>在数据库中，创建表的外键关系<br/>

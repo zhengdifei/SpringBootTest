@@ -1,16 +1,12 @@
-package com.flying.view.filter;
+package com.mixislink.view.filter;
 
+import com.mixislink.logging.Log;
+import com.mixislink.logging.LogFactory;
+import org.springframework.core.annotation.Order;
+
+import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
-
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-
-import com.flying.logging.Log;
-import com.flying.logging.LogFactory;
 
 /**
  * 
@@ -21,10 +17,12 @@ import com.flying.logging.LogFactory;
  * 
  * @author zdf
  */
+//@Order(1)
+//@WebFilter(filterName = "CharsetFilter", urlPatterns = "/*")
 public class CharsetFilter implements Filter {
 	private static Log log = LogFactory.getLog(CharsetFilter.class);//日志
 	
-	private String encoding;
+	private String encoding = "UTF-8";
     /**
      * Default constructor. 
      */

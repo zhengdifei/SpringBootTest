@@ -1,6 +1,7 @@
-package com.flying.util;
+package com.mixislink.util;
 
 import java.security.MessageDigest;
+
 /**
  * 
  * <B>描述：</B>MD5加密工具类<br/>
